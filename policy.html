@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chính sách | The Face Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-transition">
+  <header id="siteHeader" class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="image/Logo.png" alt="The Face Shop" class="brand-logo">
+        <div class="brand-text"><strong>The Face Shop</strong></div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="sanpham.html" class="nav-link">Sản phẩm</a>
+        <a href="flashsale.html" class="nav-link" style="color: var(--accent); font-weight: 700;">Flash Sale</a>
+        <a href="policy.html" class="nav-link">Chính sách</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <a href="contact.html" class="nav-link">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="openCartBtn">🛒 <span id="cartCount" class="badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:60px 0;">
+    <h1 class="page-title">Chính sách của The Face Shop</h1>
+    <div class="policy-section">
+      <h3>1. Chính sách giao hàng</h3>
+      <p>- Giao hàng toàn quốc trong 2–5 ngày làm việc.</p>
+      <p>- Miễn phí vận chuyển với đơn hàng từ 500.000đ trở lên.</p>
+
+      <h3>2. Chính sách đổi trả</h3>
+      <p>- Chấp nhận đổi trả trong vòng 7 ngày kể từ khi nhận hàng.</p>
+      <p>- Sản phẩm phải còn nguyên tem, chưa sử dụng, còn hóa đơn.</p>
+
+      <h3>3. Chính sách bảo mật thông tin</h3>
+      <p>- Thông tin khách hàng được bảo mật tuyệt đối.</p>
+      <p>- Chúng tôi chỉ sử dụng thông tin cho mục đích giao hàng và chăm sóc khách hàng.</p>
+
+      <h3>4. Chính sách hoàn tiền</h3>
+      <p>- Hoàn tiền trong vòng 3–5 ngày làm việc sau khi xác nhận yêu cầu hợp lệ.</p>
+    </div>
+  </main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div><strong>The Face Shop</strong></div>
+      </div>
+      <p class="footer-desc">
+        Mỹ phẩm thiên nhiên hàng đầu Hàn Quốc. Sản phẩm chất lượng cao, an toàn cho mọi loại da.
+      </p>
+      <div class="footer-address">
+        <p><strong>Địa chỉ:</strong></p>
+        <p>123 Đường Nguyễn Huệ, Quận 1, TP. HCM</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên kết nhanh</strong>
+      <ul class="footer-links">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="sanpham.html">Sản phẩm</a></li>
+        <li><a href="flashsale.html">Flash Sale</a></li>
+        <li><a href="policy.html">Chính sách</a></li>
+        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên hệ & Đăng ký nhận tin</strong>
+      <p class="footer-text">Đăng ký để nhận ưu đãi mới nhất!</p>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" placeholder="Nhập email của bạn" required>
+        <button type="submit" class="btn-footer">Đăng ký</button>
+      </form>
+      <div class="footer-support">
+        <p>Hỗ trợ khách hàng:</p>
+        <strong class="support-phone">0123.456.789</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 <strong>The Face Shop</strong>. All rights reserved.
+    By.MP
+  </div>
+</footer>
+  <script>
+  document.body.classList.add('fade-transition');
+  window.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => document.body.classList.add('loaded')));
+  document.querySelectorAll('a[href]').forEach(link => {
+    const url = link.getAttribute('href');
+    if (url && !url.startsWith('#') && !url.startsWith('javascript')) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.remove('loaded');
+        setTimeout(() => { window.location.href = url; }, 300);
+      });
+    }
+  });
+  </script>
+</body>
+</html>

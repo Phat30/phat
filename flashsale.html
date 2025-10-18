@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flash Sale - Siêu ưu đãi hôm nay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <header id="siteHeader" class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="image/Logo.png" alt="The Face Shop" class="brand-logo">
+        <div class="brand-text"><strong>The Face Shop</strong></div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="sanpham.html" class="nav-link">Sản phẩm</a>
+        <a href="flashsale.html" class="nav-link" style="color: var(--accent); font-weight: 700;">Flash Sale</a>
+        <a href="policy.html" class="nav-link">Chính sách</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <a href="contact.html" class="nav-link">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="openCartBtn">🛒 <span id="cartCount" class="badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+<main class="container section">
+    <section class="section flash-sale-section">
+  <div class="section-header" style="text-align:center; margin-bottom: 30px;">
+    <h2 style="color: var(--accent); font-size: 28px;">🔥 Flash Sale Hôm Nay</h2>
+    <div class="flash-sale-timer" style="display:flex; justify-content:center; gap:15px;">
+      <div class="timer-unit"><span id="fs-hours">00</span><small>Giờ</small></div>
+      <div class="timer-unit"><span id="fs-minutes">00</span><small>Phút</small></div>
+      <div class="timer-unit"><span id="fs-seconds">00</span><small>Giây</small></div>
+    </div>
+  </div>
+
+  <div id="flashSaleGrid" class="product-grid">
+    <p class="muted" style="grid-column:1 / -1;text-align:center;">Đang tải Flash Sale...</p>
+  </div>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <a href="flashsale.html" class="btn btn-outline" style="color: var(--accent); border-color: var(--accent);">
+      Xem tất cả Flash Sale
+    </a>
+  </div>
+</section>
+</main>
+
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  </aside>
+
+<div id="toastWrap"></div>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div><strong>The Face Shop</strong></div>
+      </div>
+      <p class="footer-desc">
+        Mỹ phẩm thiên nhiên hàng đầu Hàn Quốc. Sản phẩm chất lượng cao, an toàn cho mọi loại da.
+      </p>
+      <div class="footer-address">
+        <p><strong>Địa chỉ:</strong></p>
+        <p>123 Đường Nguyễn Huệ, Quận 1, TP. HCM</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên kết nhanh</strong>
+      <ul class="footer-links">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="sanpham.html">Sản phẩm</a></li>
+        <li><a href="flashsale.html">Flash Sale</a></li>
+        <li><a href="policy.html">Chính sách</a></li>
+        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên hệ & Đăng ký nhận tin</strong>
+      <p class="footer-text">Đăng ký để nhận ưu đãi mới nhất!</p>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" placeholder="Nhập email của bạn" required>
+        <button type="submit" class="btn-footer">Đăng ký</button>
+      </form>
+      <div class="footer-support">
+        <p>Hỗ trợ khách hàng:</p>
+        <strong class="support-phone">0123.456.789</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 <strong>The Face Shop</strong>. All rights reserved.
+    By.MP
+  </div>
+</footer>
+
+<script src="products_data.js"></script>
+<script src="script.js"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chi tiết sản phẩm - The Face Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <header id="siteHeader" class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="image/Logo.png" alt="The Face Shop" class="brand-logo">
+        <div class="brand-text"><strong>The Face Shop</strong></div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="sanpham.html" class="nav-link">Sản phẩm</a>
+        <a href="flashsale.html" class="nav-link" style="color: var(--accent); font-weight: 700;">Flash Sale</a>
+        <a href="policy.html" class="nav-link">Chính sách</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <a href="contact.html" class="nav-link">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="openCartBtn">🛒 <span id="cartCount" class="badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div id="productDetail" class="product-detail"></div>
+
+    <div class="product-extra">
+      <div class="tabs">
+        <div class="tab active" data-tab="desc">Mô tả</div>
+        <div class="tab" data-tab="reviews">Đánh giá</div>
+      </div>
+
+      <div id="desc" class="tab-content active">
+        <div id="descriptionContent"></div>
+      </div>
+
+      <div id="reviews" class="tab-content">
+        <div id="reviewList"></div>
+      </div>
+    </div>
+
+    <section class="section" id="relatedProducts">
+      <h2 class="section-title">Sản phẩm liên quan</h2>
+      <div class="related-products product-grid"></div>
+    </section>
+
+    <section class="section" id="recentProducts">
+      <h2 class="section-title">Sản phẩm bạn đã xem</h2>
+      <div id="recentGrid" class="product-grid"></div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div><strong>The Face Shop</strong></div>
+      </div>
+      <p class="footer-desc">
+        Mỹ phẩm thiên nhiên hàng đầu Hàn Quốc. Sản phẩm chất lượng cao, an toàn cho mọi loại da.
+      </p>
+      <div class="footer-address">
+        <p><strong>Địa chỉ:</strong></p>
+        <p>123 Đường Nguyễn Huệ, Quận 1, TP. HCM</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên kết nhanh</strong>
+      <ul class="footer-links">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="sanpham.html">Sản phẩm</a></li>
+        <li><a href="flashsale.html">Flash Sale</a></li>
+        <li><a href="policy.html">Chính sách</a></li>
+        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên hệ & Đăng ký nhận tin</strong>
+      <p class="footer-text">Đăng ký để nhận ưu đãi mới nhất!</p>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" placeholder="Nhập email của bạn" required>
+        <button type="submit" class="btn-footer">Đăng ký</button>
+      </form>
+      <div class="footer-support">
+        <p>Hỗ trợ khách hàng:</p>
+        <strong class="support-phone">0123.456.789</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 <strong>The Face Shop</strong>. All rights reserved.
+    By.MP
+  </div>
+</footer>
+
+  <script src="products_data.js"></script>
+  <script src="script.js"></script>
+<script>
+    const renderProductDetail = () => {
+      if (typeof PRODUCTS === 'undefined' || typeof getPrice === 'undefined' || typeof fmt === 'undefined' || typeof addToCart === 'undefined') {
+        console.error("Thiếu các dependency: PRODUCTS, getPrice, fmt, hoặc addToCart.");
+        return; 
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const main = document.getElementById('productDetail');
+      if (!id || !main) return;
+
+      const product = PRODUCTS.find(p => String(p.id) === id);
+      if (!product) {
+        main.innerHTML = '<h2>Không tìm thấy sản phẩm!</h2>';
+        return;
+      }
+
+      const priceInfo = getPrice(product.id);
+      const price = priceInfo.price;
+      const originalPrice = priceInfo.originalPrice;
+      const isSale = priceInfo.isSale;
+
+      let recent = JSON.parse(localStorage.getItem("recentProducts") || "[]");
+      recent = [product.id, ...recent.filter(pid => pid !== product.id)].slice(0, 6);
+      localStorage.setItem("recentProducts", JSON.stringify(recent));
+      const galleryImages = (product.gallery || product.images || []).filter(src => src !== product.img).slice(0, 3);
+      const allImages = [product.img || product.image, ...galleryImages];
+      main.innerHTML = `
+        <div class="product-detail-grid">
+          <div class="product-image-container">
+            <img id="mainImage" src="${product.img || product.image}" alt="${product.name}" class="main-img">
+            <div class="thumb-row">
+              ${allImages.map((src, index) => 
+                `<img src="${src}" class="thumb ${index === 0 ? 'active' : ''}" data-src="${src}">`
+              ).join('')}
+            </div>
+          </div>
+          <div class="product-info-container">
+            <h1>${product.name}</h1>
+            <div class="rating-row">
+              ${'★'.repeat(product.rating || 4)}${'☆'.repeat(5 - (product.rating || 4))}
+              <span>(${product.reviews || 0} đánh giá)</span>
+            </div>
+            <p class="sold-count">Đã bán: <strong>${product.sold || 0}</strong></p>
+            <div class="product-price-section">
+              ${isSale ? `<del>${fmt(originalPrice)}</del>` : ''}
+              <span class="current">${fmt(price)}</span>
+              ${isSale ? `<span class="sale-tag">-${Math.round((1 - price / originalPrice) * 100)}%</span>` : ''}
+            </div>
+
+            <div class="quantity-control-group">
+              <label>Số lượng:</label>
+              <div class="quantity-selector">
+                <button id="qtyMinus">-</button>
+                <input type="number" id="productQty" value="1" min="1" max="99" onchange="if(this.value < 1) this.value = 1;">
+                <button id="qtyPlus">+</button>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button class="btn btn-secondary" id="addToCartBtn" data-id="${product.id}">🛒 Thêm vào giỏ</button>
+              <button class="btn btn-primary btn-accent" id="buyNowBtn" data-id="${product.id}">Mua ngay</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById("descriptionContent").innerHTML = product.desc || product.description || 'Mô tả đang được cập nhật...';
+      document.querySelectorAll(".thumb-row .thumb").forEach(img => {
+        img.addEventListener("click", (e) => {
+          document.getElementById("mainImage").src = e.target.getAttribute('data-src');
+          document.querySelectorAll(".thumb-row .thumb").forEach(t => t.classList.remove("active"));
+          e.target.classList.add("active");
+        });
+      });
+      document.getElementById("qtyMinus").addEventListener("click", () => {
+        const input = document.getElementById("productQty");
+        let current = parseInt(input.value);
+        if (current > 1) input.value = current - 1;
+      });
+      document.getElementById("qtyPlus").addEventListener("click", () => {
+        const input = document.getElementById("productQty");
+        input.value = parseInt(input.value) + 1;
+      });
+      document.getElementById("addToCartBtn").addEventListener("click", () => {
+        const qty = parseInt(document.getElementById("productQty").value) || 1;
+        addToCart(product.id, qty);
+        if (typeof updateCartCount === 'function') updateCartCount();
+        if (typeof toast === 'function') toast(`Đã thêm ${qty} sản phẩm vào giỏ!`);
+      });
+
+      document.getElementById("buyNowBtn").addEventListener("click", () => {
+        const qty = parseInt(document.getElementById("productQty").value) || 1;
+        addToCart(product.id, qty);
+        window.location.href = "cart.html";
+      });
+      if (typeof renderRelatedProducts === 'function') renderRelatedProducts(product);
+      if (typeof renderRecentProducts === 'function') renderRecentProducts();
+    };
+    document.addEventListener('DOMContentLoaded', renderProductDetail);
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

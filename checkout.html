@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thanh toán - The Face Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="siteHeader" class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="image/Logo.png" alt="The Face Shop" class="brand-logo">
+        <div class="brand-text"><strong>The Face Shop</strong></div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="sanpham.html" class="nav-link">Sản phẩm</a>
+        <a href="flashsale.html" class="nav-link" style="color: var(--accent); font-weight: 700;">Flash Sale</a>
+        <a href="policy.html" class="nav-link">Chính sách</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <a href="contact.html" class="nav-link">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="openCartBtn">🛒 <span id="cartCount" class="badge">0</span></a>
+      </div>
+    </div>
+  </header>
+<main class="container section">
+  <h2>Thanh toán</h2>
+  <div class="checkout-grid">
+    <div class="checkout-left">
+      <h3>Thông tin giao hàng</h3>
+
+      <form id="checkoutForm" class="checkout-form">
+        <input name="name" placeholder="Họ và tên" required>
+        <input name="phone" placeholder="Số điện thoại" required>
+        <input name="email" type="email" placeholder="Email (Không bắt buộc)">
+        <textarea name="address" rows="3" placeholder="Địa chỉ giao hàng" required></textarea>
+
+        <h3 style="margin-top: 30px;">Phương thức thanh toán</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+          <label><input type="radio" name="payment" value="cod" checked> Thanh toán khi nhận hàng (COD)</label>
+          <label><input type="radio" name="payment" value="bank"> Chuyển khoản ngân hàng</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">HOÀN TẤT ĐẶT HÀNG</button>
+      </form>
+    </div>
+    <div class="checkout-right">
+      <h3>Đơn hàng của bạn</h3>
+      <div id="checkoutItemsList" class="checkout-items-list">
+        <div class="checkout-header-row" style="display: flex; justify-content: space-between; font-weight: 600; padding-bottom: 5px; border-bottom: 1px solid #ccc; margin-bottom: 10px;">
+          <span style="flex: 3;">Sản phẩm</span>
+          <span style="flex: 1; text-align: center;">SL</span>
+          <span style="flex: 1; text-align: right;">Thành tiền</span>
+        </div>
+      </div>
+
+      <div class="cart-summary-box">
+        <div class="summary-line subtotal-line">
+          <span>Tạm tính:</span><span>0đ</span>
+        </div>
+        <div class="summary-line discount-line">
+          <span>Giảm giá:</span><span>- 0đ</span>
+        </div>
+        <div class="summary-line shipping-line">
+          <span>Phí vận chuyển:</span><span>0đ</span>
+        </div>
+        <div class="summary-line total-line" style="padding-top: 15px; border-top: 1px solid #eee;">
+          <span>TỔNG CỘNG</span>
+          <span id="checkoutFinalTotal" style="color: var(--primary); font-weight: 600;">0đ</span> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="orderConfirmation" class="order-confirmation" 
+     style="display:none; padding:30px; border:1px solid #ccc; border-radius:8px; margin-top:30px; text-align:center;">
+  <h2>🎉 Đặt hàng thành công!</h2>
+  <p>Cảm ơn bạn đã đặt hàng tại The Face Shop.</p>
+
+  <div style="text-align:left; max-width:400px; margin:0 auto;">
+    <strong>Mã đơn hàng:</strong> <span id="orderCode"></span><br>
+    <strong>Mã vận chuyển:</strong> <span id="shippingCode"></span><br>
+    <hr style="border-top:1px dashed #ddd; margin:10px 0;">
+    <strong>Tổng tiền đã thanh toán:</strong>
+    <strong id="finalPaidTotal" style="color:var(--primary);">0đ</strong>
+  </div>
+  <div id="customerInfo"></div>
+
+  <a href="index.html" class="btn btn-primary" style="margin-top:30px;">Về trang chủ</a>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div><strong>The Face Shop</strong></div>
+      </div>
+      <p class="footer-desc">
+        Mỹ phẩm thiên nhiên hàng đầu Hàn Quốc. Sản phẩm chất lượng cao, an toàn cho mọi loại da.
+      </p>
+      <div class="footer-address">
+        <p><strong>Địa chỉ:</strong></p>
+        <p>123 Đường Nguyễn Huệ, Quận 1, TP. HCM</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên kết nhanh</strong>
+      <ul class="footer-links">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="sanpham.html">Sản phẩm</a></li>
+        <li><a href="flashsale.html">Flash Sale</a></li>
+        <li><a href="policy.html">Chính sách</a></li>
+        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên hệ & Đăng ký nhận tin</strong>
+      <p class="footer-text">Đăng ký để nhận ưu đãi mới nhất!</p>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" placeholder="Nhập email của bạn" required>
+        <button type="submit" class="btn-footer">Đăng ký</button>
+      </form>
+      <div class="footer-support">
+        <p>Hỗ trợ khách hàng:</p>
+        <strong class="support-phone">0123.456.789</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 <strong>The Face Shop</strong>. All rights reserved.
+    By.MP
+  </div>
+</footer>
+
+<script src="products_data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

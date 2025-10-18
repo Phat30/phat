@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Giỏ hàng của bạn - The Face Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="siteHeader" class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="image/Logo.png" alt="The Face Shop" class="brand-logo">
+        <div class="brand-text"><strong>The Face Shop</strong></div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="sanpham.html" class="nav-link">Sản phẩm</a>
+        <a href="flashsale.html" class="nav-link" style="color: var(--accent); font-weight: 700;">Flash Sale</a>
+        <a href="policy.html" class="nav-link">Chính sách</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <a href="contact.html" class="nav-link">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="openCartBtn">🛒 <span id="cartCount" class="badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+<main class="container section">
+    <h2 style="text-align: center;">Giỏ hàng của bạn</h2>
+    
+    <div id="emptyCartMessage" style="text-align: center; display: none;">
+        <p class="muted">Giỏ hàng của bạn đang trống.</p>
+        <a href="sanpham.html" class="btn btn-primary">Tiếp tục mua sắm</a>
+    </div>
+
+    <div class="cart-page-layout" id="cartSection" style="display: none;">
+        <div class="cart-page-left">
+            <div class="cart-header">
+                <span class="col-product">Sản phẩm</span>
+                <span class="col-price">Giá</span>
+                <span class="col-qty">Số lượng</span>
+                <span class="col-total">Tổng tiền</span>
+            </div>
+            <div id="cartItems" class="cart-items-list">
+                </div>
+            <a href="sanpham.html" class="btn btn-outline" style="margin-top: 20px;"> ← Tiếp tục mua sắm</a>
+        </div>
+
+        <div class="cart-page-right">
+            <div class="cart-summary-box">
+                <h3>Tóm tắt đơn hàng</h3>
+                
+                <form id="voucherForm" class="voucher-form">
+                    <input id="voucherCode" type="text" placeholder="Nhập mã giảm giá" required>
+                    <button type="submit" class="btn btn-primary">Áp dụng</button>
+                </form>
+                <div class="available-vouchers-box">
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">Mã giảm giá có sẵn:</h4>
+                    <div id="availableVouchersList">
+                        </div>
+                </div>
+                <div class="summary-line subtotal-line">
+                    <span>Tạm tính:</span>
+                    <span id="cartPageSubtotal">0đ</span>
+                </div>
+
+                <div class="summary-line discount-line">
+                    <span>Mã giảm giá:</span>
+                    <span>- 0đ</span> </div>
+
+                <div class="summary-line shipping-line">
+                    <span>Phí vận chuyển:</span>
+                    <span>30.000đ</span> </div>
+
+                <div class="summary-line total-line">
+                    <span>Tổng cộng:</span>
+                    <span id="cartPageGrandTotal">0đ</span>
+                </div>
+                
+                <a href="checkout.html" class="btn btn-primary btn-full">Tiến hành đặt hàng</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div><strong>The Face Shop</strong></div>
+      </div>
+      <p class="footer-desc">
+        Mỹ phẩm thiên nhiên hàng đầu Hàn Quốc. Sản phẩm chất lượng cao, an toàn cho mọi loại da.
+      </p>
+      <div class="footer-address">
+        <p><strong>Địa chỉ:</strong></p>
+        <p>123 Đường Nguyễn Huệ, Quận 1, TP. HCM</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên kết nhanh</strong>
+      <ul class="footer-links">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="sanpham.html">Sản phẩm</a></li>
+        <li><a href="flashsale.html">Flash Sale</a></li>
+        <li><a href="policy.html">Chính sách</a></li>
+        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <strong class="footer-title">Liên hệ & Đăng ký nhận tin</strong>
+      <p class="footer-text">Đăng ký để nhận ưu đãi mới nhất!</p>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" placeholder="Nhập email của bạn" required>
+        <button type="submit" class="btn-footer">Đăng ký</button>
+      </form>
+      <div class="footer-support">
+        <p>Hỗ trợ khách hàng:</p>
+        <strong class="support-phone">0123.456.789</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 <strong>The Face Shop</strong>. All rights reserved.
+    By.MP
+  </div>
+</footer>
+
+<div id="toastWrap"></div>
+<script src="products_data.js"></script>
+<script src="script.js"></script>
+<script src="voucher_data.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderCart === 'function') {
+            renderCart();
+        }
+        
+        if (typeof initCartListeners === 'function') {
+            initCartListeners();
+        }
+    });
+</script>
+</body>
+</html>
